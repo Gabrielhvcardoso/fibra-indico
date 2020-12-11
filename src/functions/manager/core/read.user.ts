@@ -3,7 +3,7 @@ import knex from '../../../database';
 import { Response } from '../../../types/response';
 import { User } from '../../../types/user';
 
-type UserReadResponse = Response & { users?: Array<User> };
+export type UserReadResponse = Response & { users?: Array<User> };
 
 const read = async (status: number): Promise<UserReadResponse> => {
   try {

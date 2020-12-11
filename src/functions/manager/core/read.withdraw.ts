@@ -4,7 +4,7 @@ import { Response } from '../../../types/response';
 import { WithdrawOrder } from '../../../types/withdrawOrder';
 
 type WithdrawOrderWithUser = Omit<WithdrawOrder, 'fromUserToken'> & { user: User };
-type WithdrawReadResponse = Response & { withdrawOrders?: Array<WithdrawOrderWithUser> };
+export type WithdrawReadResponse = Response & { withdrawOrders?: Array<WithdrawOrderWithUser> };
 
 const read = async (): Promise<WithdrawReadResponse> => {
   try {

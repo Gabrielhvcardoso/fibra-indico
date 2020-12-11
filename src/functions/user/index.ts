@@ -21,7 +21,7 @@ interface Props {
   indicate: (recommendation: NewRecommendation) => Promise<UserIndicateResponse>
 }
 
-const user: Props = {
+export const user: Props = {
   create,
   read,
   update,

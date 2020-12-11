@@ -6,7 +6,7 @@ import { Response } from '../../../types/response';
 import { User } from '../../../types/user';
 
 type RecommendationWithUser = Omit<Omit<Recommendation, 'fromUserToken'>, 'productId'> & { user: User, product: Product };
-type RecommendationReadResponse = Response & { recommendations?: Array<RecommendationWithUser> };
+export type RecommendationReadResponse = Response & { recommendations?: Array<RecommendationWithUser> };
 
 const read = async (): Promise<RecommendationReadResponse> => {
   try {
