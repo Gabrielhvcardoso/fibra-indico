@@ -4,5 +4,6 @@ export interface Recommendation {
   productId: number,
   client: string,
   phone1: string,
-  phone2?: string
+  phone2?: string,
+  createdAt: string
 }
