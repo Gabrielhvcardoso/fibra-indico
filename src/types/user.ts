@@ -3,10 +3,11 @@ export interface User {
   name: string,
   phone: string,
   cpf: string,
-  indicatedBy: string,
+  indicatedBy?: string,
   city: string,
   state: string,
   account: number,
   email: string,
-  status: number
+  status: number,
+  secret: string,
 }
