@@ -1,5 +1,5 @@
 export interface User {
-  token: string | null,
+  token: string,
   name: string,
   phone: string,
   cpf: string,

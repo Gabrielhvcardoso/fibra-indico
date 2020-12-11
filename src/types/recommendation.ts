@@ -1,5 +1,5 @@
 export interface Recommendation {
-  recommendationId: number | null,
+  recommendationId: number,
   fromUserToken: string,
   productId: number,
   client: string,
