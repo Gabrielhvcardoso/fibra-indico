@@ -3,5 +3,6 @@ export interface WithdrawOrder {
   fromUserToken: number,
   amount: number,
   status: string,
-  createdAt: string
+  createdAt: string,
+  method: string
 }
