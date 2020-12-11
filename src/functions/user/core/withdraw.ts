@@ -1,7 +1,7 @@
 import knex from '../../../database';
 import { Response } from '../../../types/response';
 
-type UserWithdrawResponse = Response & { withdrawId?: number };
+export type UserWithdrawResponse = Response & { withdrawId?: number };
 
 const withdraw = async (token: string, amount: number): Promise<UserWithdrawResponse> => {
   const response: Array<number> = await knex('withdrawOrder')

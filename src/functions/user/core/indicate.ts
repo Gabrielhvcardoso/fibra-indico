@@ -3,9 +3,9 @@ import knex from '../../../database';
 import { Response } from '../../../types/response';
 import { Recommendation } from '../../../types/recommendation';
 
-type NewRecommendation = Omit<Recommendation, 'recommendationId'>;
+export type NewRecommendation = Omit<Recommendation, 'recommendationId'>;
 
-type UserIndicateResponse = Response & { recommendationId?: number };
+export type UserIndicateResponse = Response & { recommendationId?: number };
 
 const indicate = async (recommendation: NewRecommendation): Promise<UserIndicateResponse> => {
   const response: Array<number> = await knex('recommendation').insert(recommendation);

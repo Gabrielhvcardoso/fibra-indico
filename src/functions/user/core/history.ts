@@ -4,7 +4,7 @@ import { Recommendation } from '../../../types/recommendation';
 import { Response } from '../../../types/response';
 import { WithdrawOrder } from '../../../types/withdrawOrder';
 
-type UserHistoryResponse = Response & { history?: Array<Recommendation | WithdrawOrder> }
+export type UserHistoryResponse = Response & { history?: Array<Recommendation | WithdrawOrder> }
 
 const history = async (token: string): Promise<UserHistoryResponse> => {
   try {

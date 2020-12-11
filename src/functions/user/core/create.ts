@@ -4,9 +4,9 @@ import knex from '../../../database';
 import { Response } from '../../../types/response';
 import { User } from '../../../types/user';
 
-type NewUser = Omit<User, 'token'>;
+export type NewUser = Omit<User, 'token'>;
 
-interface UserCreateResponse extends Response {
+export interface UserCreateResponse extends Response {
   token?: string
 }
 

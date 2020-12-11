@@ -1,13 +1,27 @@
-import create from './core/create';
-import read from './core/read';
+import create, { NewUser, UserCreateResponse } from './core/create';
+import read, { UserReadResponse } from './core/read';
 import update from './core/update';
 import destroy from './core/destroy';
-import auth from './core/auth';
-import history from './core/history';
-import withdraw from './core/withdraw';
-import indicate from './core/indicate';
+import auth, { UserAuthResponse } from './core/auth';
+import history, { UserHistoryResponse } from './core/history';
+import withdraw, { UserWithdrawResponse } from './core/withdraw';
+import indicate, { NewRecommendation, UserIndicateResponse } from './core/indicate';
 
-export default {
+import { User } from '../../types/user';
+import { Response } from '../../types/response';
+
+interface Props {
+  create: (user: NewUser) => Promise<UserCreateResponse>,
+  read: (token: string) => Promise<UserReadResponse>,
+  update: (token: string, user: User) => Promise<Response>,
+  destroy: (token: string) => Promise<Response>,
+  auth: (login: string, password: string) => Promise<UserAuthResponse>,
+  history: (token: string) => Promise<UserHistoryResponse>,
+  withdraw: (token: string, amount: number) => Promise<UserWithdrawResponse>,
+  indicate: (recommendation: NewRecommendation) => Promise<UserIndicateResponse>
+}
+
+const user: Props = {
   create,
   read,
   update,
@@ -17,3 +31,5 @@ export default {
   withdraw,
   indicate
 };
+
+export default user;

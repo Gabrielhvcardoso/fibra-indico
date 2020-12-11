@@ -2,7 +2,7 @@ import knex from '../../../database';
 import { Response } from '../../../types/response';
 import { User } from '../../../types/user';
 
-type UserAuthResponse = Response & { user?: User };
+export type UserAuthResponse = Response & { user?: User };
 
 const auth = async (login: string, password: string): Promise<UserAuthResponse> => {
   const response: Array<User> = await knex('user')
