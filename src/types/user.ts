@@ -7,5 +7,6 @@ export interface User {
   city: string,
   state: string,
   account: number,
-  email: string
+  email: string,
+  status: number
 }
