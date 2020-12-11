@@ -15,7 +15,7 @@ const read = async (): Promise<RecommendationReadResponse> => {
       .innerJoin('product', 'recommendation.productId', 'product.productId')
       .select(
         'recommendationId', 'client', 'phone1', 'phone2', 'createdAt', 'recommendation.status as recommendationStatus',
-        'token', 'name', 'phone', 'cpf', 'indicatedBy', 'city', 'state', 'account', 'email', 'user.status as userStatus',
+        'token', 'name', 'phone', 'cpf', 'indicatedBy', 'secret', 'city', 'state', 'account', 'email', 'user.status as userStatus',
         'product.productId', 'title', 'commission'
       );
 
@@ -38,7 +38,8 @@ const read = async (): Promise<RecommendationReadResponse> => {
           state: item.state,
           account: item.account,
           email: item.email,
-          status: item.userStatus
+          status: item.userStatus,
+          secret: item.secret
         },
 
         product: {

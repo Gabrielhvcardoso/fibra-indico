@@ -10,7 +10,7 @@ const read = async (): Promise<WithdrawReadResponse> => {
   try {
     const response = await knex('withdrawOrder')
       .innerJoin('user', 'withdrawOrder.fromUserToken', 'user.token')
-      .select('withdrawOrderId', 'amount', 'withdraw.status as withdrawStatus', 'createdAt', 'method', 'token', 'name', 'phone', 'cpf', 'indicatedBy', 'city', 'state', 'account', 'email', 'user.status as userStatus');
+      .select('withdrawOrderId', 'secret', 'amount', 'withdraw.status as withdrawStatus', 'createdAt', 'method', 'token', 'name', 'phone', 'cpf', 'indicatedBy', 'city', 'state', 'account', 'email', 'user.status as userStatus');
 
     const withdrawOrders: Array<WithdrawOrderWithUser> = response.map((item) => {
       return ({
@@ -29,7 +29,8 @@ const read = async (): Promise<WithdrawReadResponse> => {
           state: item.state,
           account: item.account,
           email: item.email,
-          status: item.userStatus
+          status: item.userStatus,
+          secret: item.secret
         }
       });
     });
