@@ -46,4 +46,16 @@ routes.get('/m/u/:status/:adminSecret', manager.users.read);
 // status user: { token: string, status: number }
 routes.post('/m/u/:adminSecret', manager.users.status);
 
+// read products
+routes.get('/m/p', manager.products.read);
+
+// create product: { product: Product }
+routes.put('/m/p/:adminSecret', manager.products.create);
+
+// update product: { productId: number, product: Product }
+routes.post('/m/p/:adminSecret', manager.products.update);
+
+// delete product: { productId }
+routes.delete('/m/p/:adminSecret', manager.products.destroy);
+
 export default routes;

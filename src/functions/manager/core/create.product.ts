@@ -2,9 +2,9 @@ import knex from '../../../database';
 import { Product } from '../../../types/product';
 import { Response } from '../../../types/response';
 
-type NewProduct = Omit<Omit<Product, 'productId'>, 'status'>;
+export type NewProduct = Omit<Omit<Product, 'productId'>, 'status'>;
 
-interface ProductCreateResponse extends Response {
+export interface ProductCreateResponse extends Response {
   productId?: number
 }
 

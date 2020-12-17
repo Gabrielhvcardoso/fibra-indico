@@ -2,7 +2,7 @@ import knex from '../../../database';
 import { Product } from '../../../types/product';
 import { Response } from '../../../types/response';
 
-type NewProduct = Omit<Product, 'productId'>;
+export type NewProduct = Omit<Product, 'productId'>;
 
 const update = async (productId: number, product: NewProduct): Promise<Response> => {
   try {
