@@ -1,5 +1,6 @@
 export interface Product {
   productId: number,
   title: string,
-  commission: number
+  commission: number,
+  status: boolean
 }
