@@ -28,6 +28,17 @@ routes.post('/u/w/:token/:secret', user.withdraw);
 // indicate: { recommendation: Recommendation }
 routes.post('/u/i', user.indicate);
 
+// MANAGER ROUTES
+
+// auth: { email: string, password: string }
+routes.post('/m', manager.auth.auth);
+
+// create auth: { email: string, password: string }
+routes.put('/m/a/:adminSecret', manager.auth.create);
+
+// update auth: { email: string, password: string }
+routes.post('/m/a/:adminSecret', manager.auth.update);
+
 // read withdraw
 routes.get('/m/w', manager.withdraws.read);
 

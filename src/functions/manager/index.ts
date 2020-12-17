@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import rStatus from './core/status.recommendation';
 import rRead, { RecommendationReadResponse } from './core/read.recommendation';
 
@@ -19,9 +20,18 @@ import hCreate, { NewHierarchy, HierarchyCreateResponse } from './core/create.hi
 import hUpdate, { UpdateHierarchy } from './core/update.hierarchy';
 import hDestroy from './core/destroy.hierarchy';
 
+import auth, { AuthResponse } from './core/auth';
+import authCreate, { AuthCreateResponse } from './core/create.auth';
+import authUpdate from './core/update.auth';
+
 import { Response } from '../../types/response';
 
 interface Props {
+  auth: {
+    auth: (email: string, password: string) => Promise<AuthResponse>,
+    create: (email: string, password: string) => Promise<AuthCreateResponse>,
+    update: (admin_secret: string, email: string, password: string) => Promise<Response>
+  },
   hierarchy: {
     read: () => HierarchyReadResponse,
     create: (hierarchy: NewHierarchy) => HierarchyCreateResponse,
@@ -51,6 +61,11 @@ interface Props {
 }
 
 const manager: Props = {
+  auth: {
+    auth,
+    create: authCreate,
+    update: authUpdate
+  },
   hierarchy: {
     read: hRead,
     create: hCreate,
