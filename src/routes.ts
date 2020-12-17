@@ -58,4 +58,16 @@ routes.post('/m/p/:adminSecret', manager.products.update);
 // delete product: { productId }
 routes.delete('/m/p/:adminSecret', manager.products.destroy);
 
+// read hierarchy
+routes.get('/m/h', manager.hierarchies.read);
+
+// create hierarchy: { hierarchy: Hierarchy }
+routes.put('/m/h/:adminSecret', manager.hierarchies.create);
+
+// update hierarchy: { hierarchyId: number, hierarchy: Hierarchy }
+routes.post('/m/h/:adminSecret', manager.hierarchies.update);
+
+// destroy hierarchy: { hierarchyId: number }
+routes.delete('/m/h/:adminSecret', manager.hierarchies.destroy);
+
 export default routes;

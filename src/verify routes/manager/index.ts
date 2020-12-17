@@ -10,6 +10,18 @@ import pCreate from './product/create';
 import pUpdate from './product/update';
 import pDestroy from './product/destroy';
 
+import hRead from './hierarchies/read';
+import hCreate from './hierarchies/create';
+import hUpdate from './hierarchies/update';
+import hDestroy from './hierarchies/destroy';
+
+const hierarchies = {
+  read: hRead,
+  create: hCreate,
+  update: hUpdate,
+  destroy: hDestroy
+};
+
 const products = {
   read: pRead,
   create: pCreate,
@@ -33,6 +45,7 @@ const withdraws = {
 };
 
 export {
+  hierarchies,
   products,
   recommendations,
   users,

@@ -12,9 +12,20 @@ import pCreate, { NewProduct, ProductCreateResponse } from './core/create.produc
 import pUpdate, { NewProduct as UpdateProduct } from './core/update.product';
 import pDestroy from './core/destroy.product';
 
+import hRead, { HierarchyReadResponse } from './core/read.hierarchy';
+import hCreate, { NewHierarchy, HierarchyCreateResponse } from './core/create.hierarchy';
+import hUpdate, { UpdateHierarchy } from './core/update.hierarchy';
+import hDestroy from './core/destroy.hierarchy';
+
 import { Response } from '../../types/response';
 
 interface Props {
+  hierarchy: {
+    read: () => HierarchyReadResponse,
+    create: (hierarchy: NewHierarchy) => HierarchyCreateResponse,
+    update: (hierarchyId: number, hierarchy: UpdateHierarchy) => Promise<Response>,
+    destroy: (hierarchyId: number) => Promise<Response>
+  },
   recommendation: {
     read: () => Promise<RecommendationReadResponse>,
     status: (recommedationId: number, status: string) => Promise<Response>
@@ -36,6 +47,12 @@ interface Props {
 }
 
 const manager: Props = {
+  hierarchy: {
+    read: hRead,
+    create: hCreate,
+    update: hUpdate,
+    destroy: hDestroy
+  },
   recommendation: {
     read: rRead,
     status: rStatus
