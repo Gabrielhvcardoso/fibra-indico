@@ -3,11 +3,10 @@ import { Request, Response } from 'express';
 
 import manager from '../../../functions/manager';
 
-type Req = Request<{ adminSecret: string }, any, { productId: number }>
+type Req = Request<{ adminSecret: string, productId: number }, any, any>
 
 export default async function (req: Req, res: Response) {
-  const { adminSecret } = req.params;
-  const { productId } = req.body;
+  const { adminSecret, productId } = req.params;
 
   if (!productId) return res.sendStatus(404);
 
