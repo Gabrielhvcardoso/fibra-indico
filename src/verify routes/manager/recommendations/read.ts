@@ -10,7 +10,7 @@ export default async function (req: Req, res: Response) {
 
   const response = await knex('auth').where({ admin_secret: adminSecret });
 
-  if (!response[0]) res.sendStatus(404);
+  if (!response[0]) return res.sendStatus(404);
 
   const read = await manager.recommendation.read();
   res.send(read);

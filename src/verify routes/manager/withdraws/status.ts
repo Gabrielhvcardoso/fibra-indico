@@ -15,7 +15,7 @@ export default async function (req: Req, res: Response) {
 
   const response = await knex('auth').where({ admin_secret: adminSecret });
 
-  if (!response[0] || !withdrawOrderId || !status) res.sendStatus(404);
+  if (!response[0] || !withdrawOrderId || !status) return res.sendStatus(404);
 
   const read = await manager.withdraw.status(withdrawOrderId, status);
   res.send(read);
