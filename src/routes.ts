@@ -46,6 +46,12 @@ routes.get('/m/u/:status/:adminSecret', manager.users.read);
 // status user: { token: string, status: number }
 routes.post('/m/u/:adminSecret', manager.users.status);
 
+// user relationship
+routes.get('/m/u/:token/:adminSecret');
+
+// user reset password: { token: string, password: string }
+routes.post('/m/u/:adminSecret');
+
 // read products
 routes.get('/m/p', manager.products.read);
 

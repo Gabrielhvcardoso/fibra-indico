@@ -3,6 +3,8 @@ import rRead, { RecommendationReadResponse } from './core/read.recommendation';
 
 import uStatus from './core/status.user';
 import uRead, { UserReadResponse } from './core/read.user';
+import uRelationship, { UserTree } from './core/relationship.user';
+import uPasswordReset from './core/password.user';
 
 import wStatus from './core/status.withdraw';
 import wRead, { WithdrawReadResponse } from './core/read.withdraw';
@@ -32,7 +34,9 @@ interface Props {
   },
   user: {
     read: (status: number) => Promise<UserReadResponse>,
-    status: (token: string, status: number) => Promise<Response>
+    status: (token: string, status: number) => Promise<Response>,
+    relationships: (token: string) => Promise<Array<UserTree>>,
+    resetPassword: (token: string, password: string) => Promise<Response>
   },
   withdraw: {
     read: () => Promise<WithdrawReadResponse>,
@@ -59,7 +63,9 @@ const manager: Props = {
   },
   user: {
     read: uRead,
-    status: uStatus
+    status: uStatus,
+    relationships: uRelationship,
+    resetPassword: uPasswordReset
   },
   withdraw: {
     read: wRead,
