@@ -4,9 +4,9 @@ export default {
   client: 'mysql',
   version: '5.5',
   connection: {
-    host: process.env.DB_HOST,
-    database: process.env.DB_DATABASE,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD
+    host: 'mysql.dmihost.com.br',
+    database: 'dmihost02',
+    user: 'dmihost02',
+    password: 'DB_PASSWORD=aZ4ArnK61IYP'
   }
 };
