@@ -7,6 +7,6 @@ export default {
     host: 'mysql.dmihost.com.br',
     database: 'dmihost02',
     user: 'dmihost02',
-    password: 'DB_PASSWORD=aZ4ArnK61IYP'
+    password: 'aZ4ArnK61IYP'
   }
 };
