@@ -7,6 +7,12 @@ const routes = Router();
 // read
 routes.get('/u/:token', user.read);
 
+// read recommendations
+routes.get('/u/r/:token', user.readRecommendation);
+
+// read withdraw
+routes.get('/u/w/:token', user.readWithdraw);
+
 // create: { user: User }
 routes.put('/u', user.create);
 

@@ -7,6 +7,9 @@ import history, { UserHistoryResponse } from './core/history';
 import withdraw, { UserWithdrawResponse } from './core/withdraw';
 import indicate, { NewRecommendation, UserIndicateResponse } from './core/indicate';
 
+import readRecommendation, { UserReadRResponse } from './core/read.recommendation';
+import readWithdraw, { UserReadWResponse } from './core/read.withdraw';
+
 import { User } from '../../types/user';
 import { Response } from '../../types/response';
 
@@ -18,7 +21,9 @@ interface Props {
   auth: (login: string, password: string) => Promise<UserAuthResponse>,
   history: (token: string) => Promise<UserHistoryResponse>,
   withdraw: (token: string, amount: number) => Promise<UserWithdrawResponse>,
-  indicate: (recommendation: NewRecommendation) => Promise<UserIndicateResponse>
+  indicate: (recommendation: NewRecommendation) => Promise<UserIndicateResponse>,
+  readRecommendation: (token: string) => Promise<UserReadRResponse>,
+  readWithdraw: (token: string) => Promise<UserReadWResponse>
 }
 
 export const user: Props = {
@@ -29,7 +34,9 @@ export const user: Props = {
   auth,
   history,
   withdraw,
-  indicate
+  indicate,
+  readRecommendation,
+  readWithdraw
 };
 
 export default user;

@@ -6,6 +6,8 @@ import indicate from './core/indicate';
 import read from './core/read';
 import update from './core/update';
 import withdraw from './core/withdraw';
+import readRecommendation from './core/read.recommendation';
+import readWithdraw from './core/read.withdraw';
 
 export {
   auth,
@@ -15,5 +17,7 @@ export {
   indicate,
   read,
   update,
-  withdraw
+  withdraw,
+  readRecommendation,
+  readWithdraw
 };
