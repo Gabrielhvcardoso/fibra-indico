@@ -52,16 +52,19 @@ routes.get('/m/r/:adminSecret', manager.recommendations.read);
 routes.post('/m/r/:adminSecret', manager.recommendations.status);
 
 // read users
-routes.get('/m/u/:status/:adminSecret', manager.users.read);
+routes.get('/m/u/:adminSecret', manager.users.read);
+
+// read status users
+routes.get('/m/u/:status/:adminSecret', manager.users.readStatus);
 
 // status user: { token: string, status: number }
 routes.post('/m/u/:adminSecret', manager.users.status);
 
 // user relationship
-routes.get('/m/u/:token/:adminSecret');
+routes.get('/m/u/r/:token/:adminSecret', manager.users.relationships);
 
 // user reset password: { token: string, password: string }
-routes.post('/m/u/:adminSecret');
+routes.post('/m/u/:adminSecret', manager.users.resetPassword);
 
 // read products
 routes.get('/m/p', manager.products.read);

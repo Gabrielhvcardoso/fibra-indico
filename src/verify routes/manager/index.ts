@@ -1,9 +1,13 @@
 import rRead from './recommendations/read';
 import rStatus from './recommendations/status';
 import uRead from './users/read';
+import uReadStatus from './users/readStatus';
 import uStatus from './users/status';
 import wRead from './withdraws/read';
 import wStatus from './withdraws/status';
+
+import relationships from './users/relationship';
+import resetPassword from './users/resetpassword';
 
 import authAuth from './auth/auth';
 import authCreate from './auth/create';
@@ -46,7 +50,10 @@ const recommendations = {
 
 const users = {
   read: uRead,
-  status: uStatus
+  readStatus: uReadStatus,
+  status: uStatus,
+  relationships,
+  resetPassword
 };
 
 const withdraws = {

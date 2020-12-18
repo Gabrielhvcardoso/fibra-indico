@@ -8,19 +8,22 @@ function listToTree (list: Array<User & { children?: any }>): Array<UserTree> {
   const map = {};
   const roots = [];
 
-  let node: User;
+  let node: User & { children?: any };
   let i: number;
 
   for (i = 0; i < list.length; i += 1) {
     map[list[i].token] = i; // initialize the map
-    list[i].children = []; // initialize the children
+    list[i] = {
+      ...list[i],
+      children: []
+    }; // initialize the children
   }
 
   for (i = 0; i < list.length; i += 1) {
     node = list[i];
-    if (node.indicatedBy !== '') {
+    if (node.indicatedBy !== null) {
       // if you have dangling branches check that map[node.parentId] exists
-      list[map[node.indicatedBy]].children.push(node);
+      list[map[node.indicatedBy]]?.children.push(node);
     } else {
       roots.push(node);
     }
@@ -31,6 +34,8 @@ function listToTree (list: Array<User & { children?: any }>): Array<UserTree> {
 const relationship = async (token: string): Promise<Array<UserTree>> => {
   const hierarchies: Array<Hierarchy> = await knex('hierarchy');
   const user: User = (await knex('user').where({ token }))[0];
+
+  user.indicatedBy = null;
 
   const depth = hierarchies.length;
   let done: Array<User> = [];
