@@ -10,13 +10,13 @@ export type RecommendationReadResponse = Response & { recommendations?: Array<Re
 
 const read = async (): Promise<RecommendationReadResponse> => {
   try {
-    const response = await knex('recommedation')
+    const response = await knex('recommendation')
       .innerJoin('user', 'recommendation.fromUserToken', 'user.token')
       .innerJoin('product', 'recommendation.productId', 'product.productId')
       .select(
         'recommendationId', 'client', 'phone1', 'phone2', 'createdAt', 'recommendation.status as recommendationStatus',
         'token', 'name', 'phone', 'cpf', 'indicatedBy', 'secret', 'city', 'state', 'account', 'email', 'user.status as userStatus',
-        'product.productId', 'title', 'commission'
+        'product.productId', 'title', 'commission', 'product.status as productStatus'
       );
 
     const recommendations = response.map((item) => {
@@ -45,13 +45,15 @@ const read = async (): Promise<RecommendationReadResponse> => {
         product: {
           productId: item.productId,
           title: item.title,
-          commission: item.commission
+          commission: item.commission,
+          status: item.productStatus
         }
       });
     });
 
     return ({ code: 'success', recommendations });
-  } catch {
+  } catch (e) {
+    console.log(e);
     return ({ code: 'error' });
   }
 };
