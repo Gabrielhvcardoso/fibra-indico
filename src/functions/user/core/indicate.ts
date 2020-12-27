@@ -13,7 +13,7 @@ const indicate = async (recommendation: NewRecommendation): Promise<UserIndicate
   if (!response[0]) return ({ code: 'error' });
 
   return ({
-    code: 'error',
+    code: 'success',
     recommendationId: response[0]
   });
 };
