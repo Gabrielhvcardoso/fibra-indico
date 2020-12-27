@@ -9,7 +9,7 @@ export type UserHistoryResponse = Response & { history?: Array<Recommendation | 
 const history = async (token: string): Promise<UserHistoryResponse> => {
   try {
     const withdraws: Array<WithdrawOrder> = await knex('withdrawOrder').where({ fromUserToken: token });
-    const recommendations: Array<Recommendation> = await knex('recommendation').where({ fromUserToken: token });
+    const recommendations: Array<Recommendation> = await knex('recommendation').innerJoin('product', 'recommendation.productId', 'product.productId').where({ fromUserToken: token });
 
     const history = [...withdraws, ...recommendations].sort((a, b) => a.createdAt > b.createdAt ? 1 : -1);
 
@@ -17,7 +17,8 @@ const history = async (token: string): Promise<UserHistoryResponse> => {
       code: 'success',
       history
     });
-  } catch {
+  } catch (e) {
+    console.log(e);
     return ({ code: 'error' });
   }
 };
