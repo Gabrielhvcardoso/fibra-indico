@@ -34,6 +34,12 @@ routes.post('/u/w/:token/:secret', user.withdraw);
 // indicate: { recommendation: Recommendation }
 routes.post('/u/i', user.indicate);
 
+// read account
+routes.get('/u/a/:token/:secret', user.readAccount);
+
+// account: { account: NewAccount | ExitentAccount }
+routes.post('/u/a/:token/:secret', user.account);
+
 // MANAGER ROUTES
 
 // auth: { email: string, password: string }
