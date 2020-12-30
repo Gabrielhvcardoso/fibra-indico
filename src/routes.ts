@@ -52,7 +52,7 @@ routes.put('/m/a/:adminSecret', manager.auth.create);
 routes.post('/m/a/:adminSecret', manager.auth.update);
 
 // read withdraw
-routes.get('/m/w', manager.withdraws.read);
+routes.get('/m/w/:adminSecret', manager.withdraws.read);
 
 // status withdraw: { withdrawOrderId: number, status: string }
 routes.post('/m/w', manager.withdraws.status);
