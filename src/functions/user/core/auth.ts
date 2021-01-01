@@ -6,7 +6,7 @@ export type UserAuthResponse = Response & { user?: User };
 
 const auth = async (login: string, password: string): Promise<UserAuthResponse> => {
   const response: Array<User> = await knex('user')
-    .where({ email: login, password });
+    .where({ email: login, password, status: 1 });
 
   if (!response[0]) {
     return ({ code: 'error' });
