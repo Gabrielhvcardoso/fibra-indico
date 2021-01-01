@@ -19,8 +19,8 @@ routes.put('/u', user.create);
 // update: { user: User }
 routes.post('/u/:token/:secret', user.update);
 
-// destroy
-routes.delete('/u/:token/:secret', user.destroy);
+// desativate (destroy user has been deprecated)
+routes.delete('/u/:token/:secret', user.desativate);
 
 // auth: { login: string, password: string }
 routes.post('/u', user.auth);

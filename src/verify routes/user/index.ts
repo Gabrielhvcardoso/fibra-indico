@@ -4,6 +4,7 @@ import create from './core/create';
 import destroy from './core/destroy';
 import history from './core/history';
 import indicate from './core/indicate';
+import desativate from './core/desativate';
 import read from './core/read';
 import update from './core/update';
 import withdraw from './core/withdraw';
@@ -18,6 +19,7 @@ export {
   destroy,
   history,
   indicate,
+  desativate,
   read,
   update,
   withdraw,
