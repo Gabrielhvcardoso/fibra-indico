@@ -2,6 +2,7 @@ import rRead from './recommendations/read';
 import rStatus from './recommendations/status';
 import uRead from './users/read';
 import uReadStatus from './users/readStatus';
+import uReadNews from './users/readNews';
 import uStatus from './users/status';
 import wRead from './withdraws/read';
 import wStatus from './withdraws/status';
@@ -50,6 +51,7 @@ const recommendations = {
 
 const users = {
   read: uRead,
+  readNews: uReadNews,
   readStatus: uReadStatus,
   status: uStatus,
   relationships,

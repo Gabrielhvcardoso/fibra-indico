@@ -66,6 +66,9 @@ routes.post('/m/r/:adminSecret', manager.recommendations.status);
 // read users
 routes.get('/m/u/:adminSecret', manager.users.read);
 
+// read new users
+routes.get('/m/u/n/:adminSecret', manager.users.readNews);
+
 // read status users
 routes.get('/m/u/:status/:adminSecret', manager.users.readStatus);
 
