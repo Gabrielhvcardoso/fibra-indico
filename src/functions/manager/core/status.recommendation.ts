@@ -17,7 +17,7 @@ const status = async (recommendationId: number, status: string): Promise<Respons
       await knex('user').where({ token: recommendation.fromUserToken }).update({ account: nextAccount });
       return ({ code: 'success' });
     } else {
-      await knex('recommendations').where({ recommendationId }).update({ status });
+      await knex('recommendation').where({ recommendationId }).update({ status });
       return ({ code: 'success' });
     }
   } catch {
