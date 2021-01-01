@@ -55,7 +55,7 @@ routes.post('/m/a/:adminSecret', manager.auth.update);
 routes.get('/m/w/:adminSecret', manager.withdraws.read);
 
 // status withdraw: { withdrawOrderId: number, status: string }
-routes.post('/m/w', manager.withdraws.status);
+routes.post('/m/w/:adminSecret', manager.withdraws.status);
 
 // read recommendation
 routes.get('/m/r/:adminSecret', manager.recommendations.read);
