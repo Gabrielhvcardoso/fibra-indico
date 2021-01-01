@@ -20,17 +20,16 @@ const create = async (user: NewUser): Promise<UserCreateResponse> => {
     if (!response[0]) token = temp;
   }
 
-  const response = await knex('user').insert({ ...user, token });
-  if (!response[0]) {
+  try {
+    await knex('user').insert({ ...user, token });
     return ({
-      code: 'error'
+      code: 'success',
+      token
     });
+  } catch (e) {
+    console.log(e);
+    return ({ code: 'error' });
   }
-
-  return ({
-    code: 'success',
-    token
-  });
 };
 
 export default create;
