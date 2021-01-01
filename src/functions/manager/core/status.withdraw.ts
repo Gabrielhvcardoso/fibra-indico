@@ -2,11 +2,12 @@ import knex from '../../../database';
 
 import { Response } from '../../../types/response';
 
-const status = async (withdrawId: number, status: string): Promise<Response> => {
+const status = async (withdrawOrderId: number, status: string): Promise<Response> => {
   try {
-    await knex('withdrawOrder').where({ withdrawId }).update({ status });
+    await knex('withdrawOrder').where({ withdrawOrderId }).update({ status });
     return ({ code: 'success' });
-  } catch {
+  } catch (e) {
+    console.log(e);
     return ({ code: 'error' });
   }
 };
