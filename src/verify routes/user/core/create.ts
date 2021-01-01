@@ -3,7 +3,7 @@ import crypto from 'crypto';
 import actions from '../../../functions/user';
 import { User } from '../../../types/user';
 
-type ReqUser = Omit<Omit<User, 'token'>, 'secret'>
+type ReqUser = Omit<Omit<Omit<Omit<User, 'token'>, 'secret'>, 'status'>, 'account'>;
 
 type Req = Request<any, any, { user: ReqUser }>
 
@@ -14,7 +14,7 @@ export default async function (req: Req, res: Response) {
 
   const secret = crypto.randomBytes(16).toString('hex');
 
-  const response = await actions.create({ ...user, secret });
+  const response = await actions.create({ ...user, secret, status: 0, account: 0 });
 
   res.send(response);
 };
