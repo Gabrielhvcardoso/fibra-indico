@@ -63,6 +63,9 @@ routes.get('/m/r/:adminSecret', manager.recommendations.read);
 // status recommendation: { recommendationId: number, status: string }
 routes.post('/m/r/:adminSecret', manager.recommendations.status);
 
+// ative user
+routes.get('/m/u/a/:token/:adminSecret', manager.users.ative);
+
 // read users
 routes.get('/m/u/:adminSecret', manager.users.read);
 

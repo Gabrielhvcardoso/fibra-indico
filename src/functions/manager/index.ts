@@ -2,6 +2,7 @@
 import rStatus from './core/status.recommendation';
 import rRead, { RecommendationReadResponse } from './core/read.recommendation';
 
+import uAtive from './core/ative.user';
 import uStatus from './core/status.user';
 import uRead, { UserReadResponse } from './core/read.user';
 import uReadNews, { UserReadResponse as UserNewsReadResponse } from './core/read.new';
@@ -45,6 +46,7 @@ interface Props {
     status: (recommedationId: number, status: string) => Promise<Response>
   },
   user: {
+    ative: (token: string) => Promise<Response>,
     read: () => Promise<UserReadResponse>,
     readNews: () => Promise<UserNewsReadResponse>,
     readStatus: (status: number) => Promise<UserReadStatusResponse>,
@@ -81,6 +83,7 @@ const manager: Props = {
     status: rStatus
   },
   user: {
+    ative: uAtive,
     read: uRead,
     readNews: uReadNews,
     readStatus: uReadStatus,
