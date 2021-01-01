@@ -12,6 +12,7 @@ export default async function (req: Req, res: Response) {
 
   if (!response[0]) return res.sendStatus(404);
 
+  console.log('here am i');
   const read = await manager.withdraw.read();
   res.send(read);
 }
