@@ -1,5 +1,6 @@
 import crypto from 'crypto';
 import knex from '../../../database';
+import find from './read';
 
 import { Response } from '../../../types/response';
 import { User } from '../../../types/user';
@@ -7,7 +8,8 @@ import { User } from '../../../types/user';
 export type NewUser = Omit<User, 'token'>;
 
 export interface UserCreateResponse extends Response {
-  token?: string
+  token?: string,
+  message?: string
 }
 
 const create = async (user: NewUser): Promise<UserCreateResponse> => {
@@ -20,8 +22,20 @@ const create = async (user: NewUser): Promise<UserCreateResponse> => {
     if (!response[0]) token = temp;
   }
 
+  if (user.indicatedBy) {
+    const response = await find(user.indicatedBy);
+
+    if (!response.user) {
+      return ({ code: 'error', message: 'invalid indicatedBy user token' });
+    }
+  }
+
   try {
-    await knex('user').insert({ ...user, token });
+    await knex('user').insert({
+      ...user,
+      indicatedBy: user.indicatedBy ? user.indicatedBy.toLowerCase() : null,
+      token
+    });
     return ({
       code: 'success',
       token
