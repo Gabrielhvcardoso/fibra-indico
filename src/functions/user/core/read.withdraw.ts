@@ -5,7 +5,7 @@ import { WithdrawOrder } from '../../../types/withdrawOrder';
 export type UserReadWResponse = Array<WithdrawOrder>
 
 const read = async (token: string): Promise<UserReadWResponse> => {
-  const response: Array<WithdrawOrder> = await knex('recommendation').where({ fromUserToken: token });
+  const response: Array<WithdrawOrder> = await knex('withdrawOrder').where({ fromUserToken: token });
   return response;
 };
 
