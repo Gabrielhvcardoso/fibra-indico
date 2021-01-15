@@ -34,7 +34,7 @@ const status = async (recommendationId: number, status: string): Promise<Respons
           await knex('user').where({ token: item.token }).update({ account: newAccount });
         });
 
-        const children: Array<User> = await knex('user').whereIn('indicatedBy', todo.map(item => item.token));
+        const children: Array<User> = await knex('user').whereIn('token', todo.map(item => item.indicatedBy));
 
         done = [...done, ...todo];
         todo = children;
